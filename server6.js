@@ -2,6 +2,9 @@ const express = require('express')
 
 const app = express()
 
+//app.use(express.urlencoded({ extended: false }));
+app.use(express.static("server-6-static-files"));
+
 app.get('/formulario', (req, res) => {
     res.status(200).send(`
     <html>
@@ -25,7 +28,12 @@ app.get('/formulario', (req, res) => {
     </html>
   `)
 })
-
+/*
+//envio por post
+app.post("/formulario", (req, res) => {
+  res.status(200).json(req.body);
+});
+*/
 app.use((req, res) => {
     res.status(404).send('Recurso no encontrado...')
   })
